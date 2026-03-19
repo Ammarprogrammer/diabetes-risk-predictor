@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./App.css";
+const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
   const initialForm = {
@@ -40,7 +41,7 @@ function App() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/predict", {
+      const res = await fetch(`${API_URL}/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -75,7 +76,7 @@ function App() {
   const fetchUserHistory = async (userName) => {
     setHistoryLoading(true);
     try {
-      const res = await fetch(`http://127.0.0.1:8000/predictions/${encodeURIComponent(userName)}`);
+      const res = await fetch(`${API_URL}/predictions/${encodeURIComponent(userName)}`);
       if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`);
       const data = await res.json();
       setUserHistory(data.predictions || []);
