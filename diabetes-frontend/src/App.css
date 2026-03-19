@@ -1,0 +1,287 @@
+/* ---------- Global ---------- */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ef);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---------- Form Container ---------- */
+.form-container {
+  background: #ffffffdd;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 720px;
+  width: 95%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- Labels ---------- */
+label {
+  display: block;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* ---------- Inputs & Selects ---------- */
+input, select {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border: 2px solid #1e90ff;
+  box-shadow: 0 0 10px rgba(30,144,255,0.3);
+  transform: scale(1.02);
+}
+
+/* Add spacing for selects dropdown arrow */
+select {
+  appearance: none;
+  background: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='5'><path fill='gray' d='M0 0l5 5 5-5z'/></svg>") no-repeat right 12px center;
+  background-color: #fff;
+  background-size: 10px 5px;
+  padding-right: 30px;
+}
+
+/* ---------- Submit Button ---------- */
+.submit-btn {
+  grid-column: span 2;
+  padding: 14px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #4e54c8, #8f94fb);
+  color: #fff;
+  transition: all 0.4s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(78,84,200,0.5);
+}
+
+/* ---------- Result Card ---------- */
+.result {
+  margin-top: 30px;
+  padding: 25px 30px;
+  border-radius: 20px;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.result.diabetic {
+  background: linear-gradient(135deg, #ff4d4d, #ff7f50);
+}
+
+.result.not-diabetic {
+  background: linear-gradient(135deg, #28a745, #00ffc4);
+}
+
+/* ---------- Probability Bar ---------- */
+.probability-bar {
+  background: #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 20px;
+  margin: 15px 0;
+}
+
+.filled-bar {
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #1e90ff, #00ffc4);
+  transition: width 1s ease-in-out;
+}
+
+/* ---------- Warning Text ---------- */
+.warning {
+  color: #ff4d4f;
+  font-weight: bold;
+  font-size: 14px;
+  animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ---------- Reset Button ---------- */
+.reset-btn {
+  padding: 12px 18px;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #1e90ff, #00ffc4);
+  color: #fff;
+  transition: all 0.4s ease;
+}
+
+.reset-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(30,144,255,0.5);
+}
+
+.reset-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- Responsive Layout ---------- */
+@media (max-width: 768px) {
+  .form-container {
+    grid-template-columns: 1fr;
+    padding: 25px;
+  }
+
+  .submit-btn {
+    grid-column: span 1;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ---------- App Container ---------- */
+.App {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 30px;
+}
+
+/* ---------- History Button ---------- */
+.history-btn {
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  color: #fff;
+  transition: all 0.4s ease;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.history-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.history-btn:active {
+  transform: translateY(0px);
+}
+
+/* ---------- History Container ---------- */
+.history-container {
+  background: #ffffffdd;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 95%;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+  margin-top: 20px;
+}
+
+.history-container h2 {
+  color: #333;
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* ---------- History List ---------- */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.history-item {
+  padding: 15px;
+  border-radius: 12px;
+  border-left: 4px solid;
+  background: #f9f9f9;
+  font-size: 0.95rem;
+}
+
+.history-item p {
+  margin: 6px 0;
+  color: #555;
+}
+
+.history-item strong {
+  color: #333;
+}
+
+.diabetic-history {
+  border-left-color: #ff4d4d;
+  background: #fff5f5;
+}
+
+.not-diabetic-history {
+  border-left-color: #28a745;
+  background: #f5fff9;
+}
+
+/* ---------- Saved Message ---------- */
+.saved-message {
+  color: #fff;
+  font-weight: 600;
+  margin: 10px 0;
+  animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
